@@ -1,0 +1,19 @@
+<?php
+require __DIR__ . '/../vendor/autoload.php';
+
+use thinkadoo\HttpServer\Builder;
+use Symfony\Component\HttpFoundation\Request;
+
+$app = new Silex\Application();
+
+$app->get('/', function () {
+        return 'Hello';
+    });
+
+$app->get('/hello/{name}', function ($name) {
+        return 'Hello ' . $name;
+    });
+
+Builder::createReactServer(function (Request $request) use ($app) {
+        return $app->handle($request);
+    })->listen(1337);
