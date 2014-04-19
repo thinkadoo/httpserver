@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 Builder::createBuiltInServer(function (Request $request) {
         return "Hello " . $request->get('name');
-    })->listen(1337);
+    })->listen(8080);
 
 ```
 
@@ -31,7 +31,7 @@ $app->get('/hello/{name}', function ($name) {
 
 Builder::createBuiltInServer(function (Request $request) use ($app) {
         return $app->handle($request);
-    })->listen(1337);
+    })->listen(8080);
 ```
 
 ## Starting one React Webserver and handling requests
@@ -44,7 +44,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 Builder::createReactServer(function (Request $request) {
         return "Hello " . $request->get('name');
-    })->listen(1337);
+    })->listen(8080);
 
 ```
 
@@ -65,5 +65,5 @@ $app->get('/hello/{name}', function ($name) {
 
 Builder::createReactServer(function (Request $request) use ($app) {
         return $app->handle($request);
-    })->listen(1337);
+    })->listen(8080);
 ```
